@@ -1,5 +1,6 @@
 require_relative "rails/routes"
-require_relative "../../app/helpers/guisso/application_helper"
+require_relative "../../app/helpers/alto_guisso_rails/application_helper"
+require 'omniauth-openid'
 require 'openid/store/filesystem'
 
 class AltoGuissoRails::Railtie < Rails::Railtie

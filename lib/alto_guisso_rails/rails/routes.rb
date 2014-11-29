@@ -88,7 +88,12 @@ module ActionDispatch::Routing
           end
 
           def find_or_create_user(email)
-            user = #{mapping.to_s.capitalize}.find_or_create_by_email(email)
+            user = if Rails::VERSION::MAJOR >= 4
+              #{mapping.to_s.capitalize}.find_or_create_by(email: email)
+            else
+              #{mapping.to_s.capitalize}.find_or_create_by_email(email)
+            end
+
             if user.new_record?
               user.confirmed_at = Time.now
               user.password = Devise.friendly_token
