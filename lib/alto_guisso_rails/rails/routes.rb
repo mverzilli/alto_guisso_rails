@@ -40,7 +40,7 @@ module ActionDispatch::Routing
           end
 
           def current_#{mapping}_with_guisso
-            unless @currrent_#{mapping}
+            unless @current_#{mapping}
               if request.authorization && request.authorization =~ /^Basic (.*)/m
                 email, password = Base64.decode64($1).split(/:/, 2)
                 if AltoGuissoRails.valid_credentials?(email, password)
