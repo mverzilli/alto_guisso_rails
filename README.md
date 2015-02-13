@@ -180,6 +180,10 @@ Remember to update the url setting in your guisso.yml with this name and the por
 
 Check out the instedd/guisso repository to find a rake task for migrating your application's existing users.
 
+## Redirect loops?
+
+If you have redirect loops, make sure that `user.confirmed_at` is set like that, and not like `attributes[:confirmed_at]`, because of ActiveRecord's whitelisting the later might not work.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/alto_guisso_rails/fork )
