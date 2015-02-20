@@ -153,7 +153,7 @@ And then execute:
         client_secret:
 
 
-### Allow OAuth and Basic authentication with Guisso credentials.
+### Allow OAuth and Basic authentication with Guisso credentials
 
 In a controller that provides an API endpoint:
 
@@ -161,7 +161,9 @@ In a controller that provides an API endpoint:
           before_filter :authenticate_api_user!
         end
 
-That is, you don't need to change anything.
+When GUISSO is enabled in `guisso.yml`, this filter will automatically handle OAuth authentication with both MAC and bearer tokens, as well as basic authentication using GUISSO. If GUISSO is disabled, it will only handle basic authentication against the local users table.
+
+Note that the Rails session managed by _devise_ will also be available for authentication, so any GET API endpoints can be accessed from the browser if logged in to the application.
 
 
 ## Running locally
