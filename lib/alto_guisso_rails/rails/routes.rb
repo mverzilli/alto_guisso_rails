@@ -68,9 +68,10 @@ module ActionDispatch::Routing
             return if @current_#{mapping}
 
             if (req = env["guisso.oauth2.req"])
-              email = AltoGuissoRails.validate_oauth2_request(req)
-              if email
-                @current_#{mapping} = find_or_create_user(email)
+              token = AltoGuissoRails.validate_oauth2_request(req)
+              if token
+                env["guisso.oauth2.token"] = token
+                @current_#{mapping} = find_or_create_user(token['user'])
                 return
               end
             elsif request.authorization && request.authorization =~ /^Basic (.*)/m

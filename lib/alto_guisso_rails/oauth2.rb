@@ -25,6 +25,6 @@ module AltoGuissoRails
       raise "Unknown token type: #{token_body['token_type']}"
     end
 
-    token_body['user']
+    token_body
   end
 end
